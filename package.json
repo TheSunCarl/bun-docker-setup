@@ -1,0 +1,14 @@
+{
+  "name": "gub",
+  "private": true,
+  "scripts": {
+    "api": "bun run --filter api",
+    "ui": "bun run --filter ui"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  }
+}

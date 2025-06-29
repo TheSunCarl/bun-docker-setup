@@ -1,0 +1,23 @@
+services:
+  web:
+    container_name: ${COMPOSE_PROJECT_NAME}
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    working_dir: /usr/src/app
+    stdin_open: true
+    tty: true
+    command: sh
+    user: root
+    volumes:
+      - ../:/usr/src/app
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.frontend.rule=Host:${VIRTUAL_HOST}'
+      - 'traefik.docker.network=${PROXY_NETWORK}'
+      - 'traefik.port=${VIRTUAL_PORT}'
+    
+networks:
+  default:
+    external: true
+    name: ${PROXY_NETWORK}
